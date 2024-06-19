@@ -1,5 +1,5 @@
 import { NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -16,6 +16,9 @@ import {
 })
 export class TodoFormComponent {
   registerForm!: FormGroup;
+
+  @Output() onCreatedTODO = new EventEmitter<any>();
+
   ngOnInit(): void {
     this.registerForm = new FormGroup({
       name: new FormControl('', [Validators.required]),
@@ -24,5 +27,7 @@ export class TodoFormComponent {
   }
   onSubmit(): void {
     console.log(this.registerForm.value);
+    this.onCreatedTODO.emit(this.registerForm.value);
+    this.registerForm.reset();
   }
 }

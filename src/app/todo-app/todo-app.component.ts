@@ -9,4 +9,9 @@ import { TodoFormComponent } from '../todo-form/todo-form.component';
   templateUrl: './todo-app.component.html',
   styleUrl: './todo-app.component.css',
 })
-export class TodoAppComponent {}
+export class TodoAppComponent {
+  onCreatedRecord(registro: any): void {
+    console.log('Nuevo registro en PageContactComponent:', registro);
+    // this.registroCreado = registro;
+  }
+}
