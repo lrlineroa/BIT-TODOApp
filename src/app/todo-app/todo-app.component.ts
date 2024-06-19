@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TodoListComponent } from '../todo-list/todo-list.component';
 import { TodoFormComponent } from '../todo-form/todo-form.component';
+import { TODOType } from '../../types';
 
 @Component({
   selector: 'app-todo-app',
@@ -10,12 +11,12 @@ import { TodoFormComponent } from '../todo-form/todo-form.component';
   styleUrl: './todo-app.component.css',
 })
 export class TodoAppComponent {
-  createdRecord: any;
-  currentRecordToUpdate: any;
-  onCreatedRecord(registro: any): void {
+  createdRecord!: TODOType;
+  currentRecordToUpdate!: TODOType;
+  onCreatedRecord(registro: TODOType): void {
     this.createdRecord = registro;
   }
-  onCurrentRecordToUpdate(registro: any): void {
+  onCurrentRecordToUpdate(registro: TODOType): void {
     this.currentRecordToUpdate = registro;
   }
 }

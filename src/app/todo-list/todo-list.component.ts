@@ -6,6 +6,7 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
+import { TODOType } from '../../types';
 
 @Component({
   selector: 'app-todo-list',
@@ -15,11 +16,11 @@ import {
   styleUrl: './todo-list.component.css',
 })
 export class TodoListComponent {
-  @Input() newTODO!: any;
+  @Input() newTODO!: TODOType;
 
-  @Output() onCurrentTODOToUpdate = new EventEmitter<any>();
+  @Output() onCurrentTODOToUpdate = new EventEmitter<TODOType>();
 
-  records: any[] = [];
+  records: TODOType[] = [];
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['newTODO'] && changes['newTODO'].currentValue) {
@@ -27,10 +28,10 @@ export class TodoListComponent {
     }
   }
 
-  handleDelete(registro: any) {
+  handleDelete(registro: TODOType) {
     console.error('Not implemented yet, let BIT students to do it!');
   }
-  handleEdit(registro: any) {
+  handleEdit(registro: TODOType) {
     this.onCurrentTODOToUpdate.emit(registro);
   }
 }

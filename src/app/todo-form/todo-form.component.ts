@@ -12,6 +12,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { TODOType } from '../../types';
 
 @Component({
   selector: 'app-todo-form',
@@ -22,8 +23,8 @@ import {
 })
 export class TodoFormComponent {
   registerForm!: FormGroup;
-  @Input() currentTODOToUpdate!: any;
-  @Output() onCreatedTODO = new EventEmitter<any>();
+  @Input() currentTODOToUpdate!: TODOType;
+  @Output() onCreatedTODO = new EventEmitter<TODOType>();
 
   ngOnInit(): void {
     this.registerForm = new FormGroup({
