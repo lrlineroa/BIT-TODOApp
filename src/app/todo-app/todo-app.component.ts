@@ -10,8 +10,9 @@ import { TodoFormComponent } from '../todo-form/todo-form.component';
   styleUrl: './todo-app.component.css',
 })
 export class TodoAppComponent {
+  createdRecord: any;
   onCreatedRecord(registro: any): void {
     console.log('Nuevo registro en PageContactComponent:', registro);
-    // this.registroCreado = registro;
+    this.createdRecord = registro;
   }
 }

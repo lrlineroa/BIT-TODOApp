@@ -26,7 +26,7 @@ export class TodoFormComponent {
     });
   }
   onSubmit(): void {
-    console.log(this.registerForm.value);
+    console.log('Form going to create', this.registerForm.value);
     this.onCreatedTODO.emit(this.registerForm.value);
     this.registerForm.reset();
   }

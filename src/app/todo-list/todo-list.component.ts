@@ -1,5 +1,5 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-todo-list',
@@ -9,7 +9,20 @@ import { Component } from '@angular/core';
   styleUrl: './todo-list.component.css',
 })
 export class TodoListComponent {
+  @Input() newTODO!: any;
   records: any[] = [];
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(
+      'A change detected from todo list: ',
+      changes['newTODO'].currentValue
+    );
+
+    if (changes['newTODO'] && changes['newTODO'].currentValue) {
+      this.records.push(changes['newTODO'].currentValue);
+    }
+  }
+
   handleDelete(registro: any) {
     console.log('delete');
   }
