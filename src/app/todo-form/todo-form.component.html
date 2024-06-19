@@ -1,1 +1,46 @@
-<p>todo-form works!</p>
+<form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
+  <div class="form-group">
+    <label for="name">Nombre:</label>
+    <input type="text" id="name" formControlName="name" class="form-control" />
+  </div>
+  <div class="error">
+    <!-- Validar los estados del campo -->
+    <div
+      *ngIf="
+        registerForm.get('name')?.invalid &&
+        (registerForm.get('name')?.dirty || registerForm.get('name')?.touched)
+      "
+    >
+      <!-- Validar las reglas que definimos para el campo -->
+      <small *ngIf="registerForm.get( 'name' )?.errors?.['required']"
+        >El nombre es requerido</small
+      >
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="date">Fecha:</label>
+    <input
+      type="datetime-local"
+      id="date"
+      formControlName="date"
+      class="form-control"
+    />
+  </div>
+  <div class="error">
+    <!-- Validar los estados del campo -->
+    <div
+      *ngIf="
+        registerForm.get('date')?.invalid &&
+        (registerForm.get('date')?.dirty || registerForm.get('date')?.touched)
+      "
+    >
+      <!-- Validar las reglas que definimos para el campo -->
+      <small *ngIf="registerForm.get( 'date' )?.errors?.['required']"
+        >La fecha es requerida</small
+      >
+    </div>
+  </div>
+
+  <button type="submit">Guardar</button>
+</form>
