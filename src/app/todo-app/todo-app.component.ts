@@ -15,6 +15,7 @@ export class TodoAppComponent {
   currentRecordToUpdate!: TODOType;
   onCreatedRecord(registro: TODOType): void {
     this.createdRecord = registro;
+    this.currentRecordToUpdate = null;
   }
   onCurrentRecordToUpdate(registro: TODOType): void {
     this.currentRecordToUpdate = registro;
