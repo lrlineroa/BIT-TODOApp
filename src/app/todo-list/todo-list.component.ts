@@ -1,5 +1,11 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component, Input, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 
 @Component({
   selector: 'app-todo-list',
@@ -10,23 +16,21 @@ import { Component, Input, SimpleChanges } from '@angular/core';
 })
 export class TodoListComponent {
   @Input() newTODO!: any;
+
+  @Output() onCurrentTODOToUpdate = new EventEmitter<any>();
+
   records: any[] = [];
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(
-      'A change detected from todo list: ',
-      changes['newTODO'].currentValue
-    );
-
     if (changes['newTODO'] && changes['newTODO'].currentValue) {
       this.records.push(changes['newTODO'].currentValue);
     }
   }
 
   handleDelete(registro: any) {
-    console.log('delete');
+    console.error('Not implemented yet, let BIT students to do it!');
   }
   handleEdit(registro: any) {
-    console.log('edit');
+    this.onCurrentTODOToUpdate.emit(registro);
   }
 }

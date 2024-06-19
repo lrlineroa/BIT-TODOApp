@@ -1,5 +1,11 @@
 import { NgIf } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -16,7 +22,7 @@ import {
 })
 export class TodoFormComponent {
   registerForm!: FormGroup;
-
+  @Input() currentTODOToUpdate!: any;
   @Output() onCreatedTODO = new EventEmitter<any>();
 
   ngOnInit(): void {
@@ -25,8 +31,13 @@ export class TodoFormComponent {
       date: new FormControl('', [Validators.required]),
     });
   }
+  ngOnChanges(changes: SimpleChanges): void {
+    const change = changes['currentTODOToUpdate'];
+    if (change && change.currentValue) {
+      this.registerForm.patchValue(change.currentValue);
+    }
+  }
   onSubmit(): void {
-    console.log('Form going to create', this.registerForm.value);
     this.onCreatedTODO.emit(this.registerForm.value);
     this.registerForm.reset();
   }

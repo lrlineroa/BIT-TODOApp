@@ -1,3 +1,9 @@
 <h1>Aplicación de mis tareas</h1>
-<app-todo-form (onCreatedTODO)="onCreatedRecord($event)" />
-<app-todo-list [newTODO]="createdRecord" />
+<app-todo-form
+  (onCreatedTODO)="onCreatedRecord($event)"
+  [currentTODOToUpdate]="currentRecordToUpdate"
+/>
+<app-todo-list
+  (onCurrentTODOToUpdate)="onCurrentRecordToUpdate($event)"
+  [newTODO]="createdRecord"
+/>

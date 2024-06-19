@@ -11,8 +11,11 @@ import { TodoFormComponent } from '../todo-form/todo-form.component';
 })
 export class TodoAppComponent {
   createdRecord: any;
+  currentRecordToUpdate: any;
   onCreatedRecord(registro: any): void {
-    console.log('Nuevo registro en PageContactComponent:', registro);
     this.createdRecord = registro;
+  }
+  onCurrentRecordToUpdate(registro: any): void {
+    this.currentRecordToUpdate = registro;
   }
 }
